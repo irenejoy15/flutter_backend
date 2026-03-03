@@ -5,7 +5,8 @@ app: test-app  # Choose your app name
 
 provider:
   name: aws
-  runtime: nodejs20.x
+  runtime: nodejs24.x
+  region: ap-southeast-2
   # Uncomment to easily set up a custom domain. Read the docs for more details:
   # https://www.serverless.com/framework/docs/providers/aws/guide/domains
   # domain: api.example.com
