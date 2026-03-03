@@ -12,15 +12,15 @@ provider:
   # domain: api.example.com
 
 functions:
-  hello:
-    handler: handler.hello
-    events:
-      - httpApi:
-          path: /
-          method: get
   signUp:
     handler: handlers/signUp.signUp
     events: 
       - httpApi:
           path: /sign-up
+          method: post
+  confirmSignUp:
+    handler: handlers/confirmSignUp.confirmSignUp
+    events:
+      - httpApi:
+          path: /confirm-sign-up
           method: post
