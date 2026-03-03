@@ -24,3 +24,9 @@ functions:
       - httpApi:
           path: /confirm-sign-up
           method: post
+  signIn:
+    handler: handlers/signIn.signIn
+    events:
+      - httpApi:
+          path: /sign-in
+          method: post
