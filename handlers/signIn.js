@@ -10,8 +10,8 @@ exports.signIn = async (event) => {
         AuthFlow: 'USER_PASSWORD_AUTH',
         ClientId: CLIENT_ID,
         AuthParameters: {
-            Username: email,
-            Password: password
+            USERNAME: email,
+            PASSWORD: password
         }
     };
 
