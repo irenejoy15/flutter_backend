@@ -17,3 +17,9 @@ functions:
       - httpApi:
           path: /
           method: get
+  signUp:
+    handler: handlers/signUp.signUp
+    events: 
+      - httpApi:
+          path: /sign-up
+          method: post
