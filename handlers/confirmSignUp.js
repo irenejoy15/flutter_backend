@@ -28,7 +28,7 @@ exports.confirmSignUp = async (event) => {
     }catch(error){
         return {
             statusCode:500,
-            body: JSON.stringify({error:'UNEXPECTED ERROR',error:error.message}),
+            body: JSON.stringify({error:'FAILED TO VERIFY USER',details:error.message}),
         };
     }
 };
