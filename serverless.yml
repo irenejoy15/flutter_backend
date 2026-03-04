@@ -12,7 +12,21 @@ provider:
   # Uncomment to easily set up a custom domain. Read the docs for more details:
   # https://www.serverless.com/framework/docs/providers/aws/guide/domains
   # domain: api.example.com
-
+resources:
+  Resources:
+    UsersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: Users
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: userId
+            AttributeType: S #string
+        KeySchema:
+          - AttributeName: userId
+            KeyType: HASH #partition key
+    # You can add AWS resources here, like DynamoDB tables, S3 buckets, etc.
+    # Read the docs for more details: https://www.serverless.com/framework/docs/providers/aws/guide/resources
 functions:
   signUp:
     handler: handlers/signUp.signUp
