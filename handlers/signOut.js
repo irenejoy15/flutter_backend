@@ -1,6 +1,6 @@
 const {CognitoIdentityProviderClient,GlobalSignOutCommand} = require('@aws-sdk/client-cognito-identity-provider');
 
-const client = new CognitoIdentityProviderClient({ region:'ap-southeast-2' });
+const client = new CognitoIdentityProviderClient({ region:process.env.REGION });
 
 const CLIENT_ID =  process.env.CLIENT_ID;
 

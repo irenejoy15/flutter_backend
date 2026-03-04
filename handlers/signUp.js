@@ -4,7 +4,7 @@
 
 const {CognitoIdentityProviderClient,SignUpCommand} = require('@aws-sdk/client-cognito-identity-provider');
 
-const client = new CognitoIdentityProviderClient({ region:'ap-southeast-2' });
+const client = new CognitoIdentityProviderClient({ region:process.env.REGION });
 
 //specify the cognito app client id
 //the app client id tells cognito which app making the request
