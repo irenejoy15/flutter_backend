@@ -2,7 +2,7 @@ const {CognitoIdentityProviderClient,InitiateAuthCommand} = require('@aws-sdk/cl
 
 const client = new CognitoIdentityProviderClient({ region:'ap-southeast-2' });
 
-const CLIENT_ID = 'bbbvsdudg6e9n0h6ujv4sqlbi';
+const CLIENT_ID =  process.env.CLIENT_ID;
 
 exports.signIn = async (event) => {
     const {email,password} = JSON.parse(event.body);

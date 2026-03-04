@@ -5,7 +5,7 @@ const client = new CognitoIdentityProviderClient({ region:'ap-southeast-2' });
 //specify the cognito app client id
 //the app client id tells cognito which app making the request
 
-const CLIENT_ID = 'bbbvsdudg6e9n0h6ujv4sqlbi';
+const CLIENT_ID =  process.env.CLIENT_ID;
 
 exports.confirmSignUp = async (event) => {
     const {email,confirmationCode} = JSON.parse(event.body);
