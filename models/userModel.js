@@ -1,5 +1,5 @@
 const {DynamoDBClient,PutItemCommand} = require('@aws-sdk/client-dynamodb');
-const {v4: uuidv4} = require('uuid');
+const crypto = require('crypto');
 
 const TABLE_NAME = "Users";
 
@@ -8,7 +8,7 @@ const dynamoClient = new DynamoDBClient({ region: process.env.REGION });
 //User Model class to represent the user data and handle database operations
 class UserModel{
     constructor(email,fullName){
-        this.userId = uuidv4();
+        this.userId = crypto.randomUUID();
         this.email = email;
         this.fullName = fullName;
         this.state = ""; //DEFAULT EMPTY
@@ -40,3 +40,5 @@ class UserModel{
         }
     }
 }
+
+module.exports = UserModel;

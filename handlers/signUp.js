@@ -3,7 +3,7 @@
 //SignUpCommand : Used to send sign-up request
 
 const {CognitoIdentityProviderClient,SignUpCommand} = require('@aws-sdk/client-cognito-identity-provider');
-
+const UserModel = require('../models/userModel');
 const client = new CognitoIdentityProviderClient({ region:process.env.REGION });
 
 //specify the cognito app client id
@@ -31,6 +31,10 @@ exports.signUp = async (event) => {
         //CREATE SIGN UP COMMAND OBJECT WITH THE PREPARED PARAMETERS
         const command = new SignUpCommand(params);
         await client.send(command);
+        //CREATE A NEW USER INSTANCE AND SAVE TO DYNAMODB
+        const newUser = new UserModel(email, fullName);
+        await newUser.save();
+
         return {
             statusCode: 200,
             body: JSON.stringify({msg:'USER SUCCESSFULLY SIGN UP'}),
