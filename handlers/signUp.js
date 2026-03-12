@@ -42,7 +42,7 @@ exports.signUp = async (event) => {
     }catch(error){
         return {
             statusCode:500,
-            body: JSON.stringify({error:'UNEXPECTED ERROR',error:error.message}),
+            body: JSON.stringify({error:'UNEXPECTED ERROR',detail:error.message}),
         };
     }
 };
