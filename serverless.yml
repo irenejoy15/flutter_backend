@@ -13,8 +13,12 @@ provider:
     - Effect: 'Allow'
       Action:
         - dynamodb:PutItem
+      # STEP 2 NG ORDERS FRONT END
+        - dynamodb:Query
+      # END STEP 2
       Resource: 
         - arn:aws:dynamodb:us-east-1:660880134927:table/Users
+        - arn:aws:dynamodb:us-east-1:660880134927:table/Users/index/EmailIndex
   # Uncomment to easily set up a custom domain. Read the docs for more details:
   # https://www.serverless.com/framework/docs/providers/aws/guide/domains
   # domain: api.example.com
@@ -28,9 +32,22 @@ resources:
         AttributeDefinitions:
           - AttributeName: userId
             AttributeType: S #string
+          # STEP 2 NG ORDERS FRONT END
+          - AttributeName: email
+            AttributeType: S #string
+          # END STEP 2
         KeySchema:
           - AttributeName: userId
             KeyType: HASH #partition key
+        # STEP 2 NG ORDERS FRONT END
+        GlobalSecondaryIndexes:
+          - IndexName: EmailIndex
+            KeySchema:
+              - AttributeName: email
+                KeyType: HASH
+            Projection:
+              ProjectionType: ALL
+        # END STEP 2
     # You can add AWS resources here, like DynamoDB tables, S3 buckets, etc.
     # Read the docs for more details: https://www.serverless.com/framework/docs/providers/aws/guide/resources
 functions:
